@@ -3,7 +3,6 @@
 LIB=		c++
 WARNS=		4
 NOLINT=		# defined
-
 .include <bsd.init.mk>
 
 .PATH: ${LIBCXX_SRCDIR}/src
@@ -39,8 +38,9 @@ CLEANFILES+=	rt_${src}
 
 .include <bsd.own.mk>
 
-CPPFLAGS+=	-nostdinc++ -cxx-isystem ${LIBCXX_SRCDIR}/include
-CPPFLAGS+=	-cxx-isystem ${.CURDIR}/../include -I${LIBCXXRT_SRCDIR}/src
+# Insert -cxx-isystem ahead of any existing -isystem flags for proper load order.
+CPPFLAGS:=	-cxx-isystem ${LIBCXX_SRCDIR}/include -cxx-isystem ${.CURDIR}/../include ${CPPFLAGS}
+CPPFLAGS+=	-nostdinc++ -I${LIBCXXRT_SRCDIR}/src
 CPPFLAGS+=	-DLIBCXXRT -D_LIBCPP_BUILDING_LIBRARY
 CXXFLAGS+=	-std=gnu++17
 
