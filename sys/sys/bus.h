@@ -245,12 +245,4 @@ typedef struct bus_dmamap {
 } *bus_dmamap_t;
 #endif /* __HAVE_NO_BUS_DMA */
 
-/*
- * Convenience macros to correctly extract the upper and lower
- * 32 bits of a bus_addr_t (which may be a 32-bit or 64-bit
- * value).
- */
-#define	BUS_ADDR_HI32(a)	((uint32_t) __SHIFTOUT(a, __BITS(32,63)))
-#define	BUS_ADDR_LO32(a)	((uint32_t) __SHIFTOUT(a, __BITS(0,31)))
-
 #endif	/* _SYS_BUS_H_ */
