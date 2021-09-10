@@ -38,6 +38,7 @@ __KERNEL_RCSID(0, "$NetBSD: ld_at_virtio.c,v 1.4 2017/05/10 06:22:15 sevan Exp $
 #include <rump-sys/kern.h>
 #include <rump-sys/vfs.h>
 
+#if 0
 #ifdef _MODULE
 /*
  * XXX Don't allow ioconf.c to redefine the "struct cfdriver ld_cd"
@@ -54,6 +55,7 @@ RUMP_COMPONENT(RUMP_COMPONENT_DEV)
 	config_init_component(cfdriver_ioconf_ld_virtio,
 	    cfattach_ioconf_ld_virtio, cfdata_ioconf_ld_virtio);
 }
+#include "ioconf.h"
 
 /*
  * Pseudo-devfs.  Since creating device nodes is non-free, don't
@@ -90,3 +92,4 @@ RUMP_COMPONENT(RUMP_COMPONENT_POSTINIT)
 			panic("cannot create raw ld dev nodes: %d", error);
 	}
 }
+#endif
