@@ -47,7 +47,6 @@ __KERNEL_RCSID(0, "$NetBSD: if_vioif.c,v 1.70 2021/02/08 06:56:26 skrll Exp $");
 #include <sys/mutex.h>
 #include <sys/sockio.h>
 #include <sys/cpu.h>
-#include <sys/module.h>
 #include <sys/pcq.h>
 #include <sys/workqueue.h>
 
@@ -2533,34 +2532,4 @@ vioif_setup_stats(struct vioif_softc *sc)
 	    NULL, device_xname(sc->sc_dev), "control command dmamap load failed");
 	evcnt_attach_dynamic(&sc->sc_ctrlq.ctrlq_cmd_failed, EVCNT_TYPE_MISC,
 	    NULL, device_xname(sc->sc_dev), "control command failed");
-}
-
-MODULE(MODULE_CLASS_DRIVER, if_vioif, "virtio");
-
-#ifdef _MODULE
-#include "ioconf.c"
-#endif
-
-static int
-if_vioif_modcmd(modcmd_t cmd, void *opaque)
-{
-	int error = 0;
-
-#ifdef _MODULE
-	switch (cmd) {
-	case MODULE_CMD_INIT:
-		error = config_init_component(cfdriver_ioconf_if_vioif,
-		    cfattach_ioconf_if_vioif, cfdata_ioconf_if_vioif);
-		break;
-	case MODULE_CMD_FINI:
-		error = config_fini_component(cfdriver_ioconf_if_vioif,
-		    cfattach_ioconf_if_vioif, cfdata_ioconf_if_vioif);
-		break;
-	default:
-		error = ENOTTY;
-		break;
-	}
-#endif
-
-	return error;
 }

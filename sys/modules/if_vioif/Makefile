@@ -7,6 +7,6 @@
 KMOD=	if_vioif
 IOCONF=	if_vioif.ioconf
 
-SRCS+=	if_vioif.c
+SRCS+=	if_vioif.c if_vioif_module.c
 
 .include <bsd.kmodule.mk>

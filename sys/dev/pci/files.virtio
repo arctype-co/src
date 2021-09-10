@@ -15,6 +15,7 @@ file	dev/pci/viomb.c		viomb
 device	vioif: ether, ifnet, arp
 attach	vioif at virtio
 file	dev/pci/if_vioif.c	vioif
+file	modules/if_vioif/if_vioif_module.c	vioif
 
 device	viornd
 attach	viornd at virtio
