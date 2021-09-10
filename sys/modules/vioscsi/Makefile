@@ -7,7 +7,9 @@
 KMOD=	vioscsi
 IOCONF=	vioscsi.ioconf
 
-SRCS+=	vioscsi.c
+CFLAGS+= -Wno-error=sign-compare
+
+SRCS+=	vioscsi.c vioscsi_module.c
 
 DBG+=	-DDEBUG -DDIAGNOSTIC -DLOCKDEBUG
 

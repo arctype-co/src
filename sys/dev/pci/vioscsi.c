@@ -25,7 +25,6 @@ __KERNEL_RCSID(0, "$NetBSD: vioscsi.c,v 1.27 2021/08/07 16:19:14 thorpej Exp $")
 #include <sys/device.h>
 #include <sys/bus.h>
 #include <sys/buf.h>
-#include <sys/module.h>
 
 #include <dev/pci/vioscsireg.h>
 #include <dev/pci/virtiovar.h>
@@ -700,34 +699,4 @@ vioscsi_free_reqs(struct vioscsi_softc *sc, struct virtio_softc *vsc)
 	bus_dmamem_unmap(virtio_dmat(vsc), sc->sc_reqs,
 			 sc->sc_nreqs * sizeof(struct vioscsi_req));
 	bus_dmamem_free(virtio_dmat(vsc), &sc->sc_reqs_segs[0], 1);
-}
-
-MODULE(MODULE_CLASS_DRIVER, vioscsi, "virtio");
-
-#ifdef _MODULE
-#include "ioconf.c"
-#endif
-
-static int
-vioscsi_modcmd(modcmd_t cmd, void *opaque)
-{
-        int error = 0;
-
-#ifdef _MODULE
-        switch (cmd) {
-        case MODULE_CMD_INIT:
-                error = config_init_component(cfdriver_ioconf_vioscsi,
-                    cfattach_ioconf_vioscsi, cfdata_ioconf_vioscsi);
-                break;
-        case MODULE_CMD_FINI:
-                error = config_fini_component(cfdriver_ioconf_vioscsi,
-                    cfattach_ioconf_vioscsi, cfdata_ioconf_vioscsi);
-                break;
-        default:
-                error = ENOTTY;
-                break;
-        }
-#endif
-
-        return error;
 }
