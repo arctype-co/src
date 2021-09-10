@@ -35,6 +35,14 @@ __KERNEL_RCSID(0, "$NetBSD: component_simple.c,v 1.3 2016/01/26 23:12:14 pooka E
 
 #include <rump-sys/kern.h>
 
+
+#ifdef _IOCONF_NO_CFDRIVER_DECL
+/*
+ * XXX Don't allow ioconf.c to redefine struct cfdrivers.
+ */
+#undef CFDRIVER_DECL
+#define CFDRIVER_DECL(name, class, attr)
+#endif
 #include "ioconf.c"
 
 #define CONFIG_INIT_COMPONENT(a) config_init_component(			\

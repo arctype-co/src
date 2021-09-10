@@ -13,7 +13,8 @@ RUMP_COMPONENT=ioconf
 
 SRCS+=	if_vioif.c
 
-CPPFLAGS+= -I${RUMPTOP}/librump/rumpkern
+CPPFLAGS+= -I${RUMPTOP}/librump/rumpkern 
+CPPFLAGS+= -D_IOCONF_NO_CFDRIVER_DECL
    
 .include "${RUMPTOP}/Makefile.rump"
 .include <bsd.lib.mk>

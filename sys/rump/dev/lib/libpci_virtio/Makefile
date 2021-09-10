@@ -14,6 +14,7 @@ RUMP_COMPONENT=ioconf
 SRCS+=	virtio.c
 
 CPPFLAGS+= -I${RUMPTOP}/librump/rumpkern
+CPPFLAGS+= -D_IOCONF_NO_CFDRIVER_DECL
    
 .include "${RUMPTOP}/Makefile.rump"
 .include <bsd.lib.mk>
