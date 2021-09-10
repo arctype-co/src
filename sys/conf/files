@@ -488,6 +488,7 @@ include "altq/files.altq"
 #
 device	ld: disk
 file	dev/ld.c			ld			needs-flag
+file	modules/ld/ld_module.c	ld	needs-flag
 
 #
 # MII/PHY support for network devices

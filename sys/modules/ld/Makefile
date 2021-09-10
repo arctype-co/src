@@ -7,6 +7,6 @@
 KMOD=	ld
 IOCONF= ld.ioconf
 
-SRCS+=	ld.c
+SRCS+=	ld.c ld_module.c
 
 .include <bsd.kmodule.mk>
