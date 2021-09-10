@@ -3,6 +3,7 @@
 # VirtIO
 device	virtio {}
 file	dev/pci/virtio.c	virtio
+file	modules/virtio/virtio_module.c	virtio
 
 attach	ld at virtio with ld_virtio
 file	dev/pci/ld_virtio.c	ld_virtio

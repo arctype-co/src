@@ -37,7 +37,6 @@ __KERNEL_RCSID(0, "$NetBSD: virtio.c,v 1.49 2021/02/07 09:29:53 skrll Exp $");
 #include <sys/bus.h>
 #include <sys/device.h>
 #include <sys/kmem.h>
-#include <sys/module.h>
 
 #define VIRTIO_PRIVATE
 
@@ -1319,35 +1318,4 @@ virtio_print_device_type(device_t self, int id, int revision)
 	aprint_normal_dev(self, "%s device (rev. 0x%02x)\n",
 		  (id < NDEVNAMES ? virtio_device_name[id] : "Unknown"),
 		  revision);
-}
-
-
-MODULE(MODULE_CLASS_DRIVER, virtio, NULL);
-
-#ifdef _MODULE
-#include "ioconf.c"
-#endif
-
-static int
-virtio_modcmd(modcmd_t cmd, void *opaque)
-{
-	int error = 0;
-
-#ifdef _MODULE
-	switch (cmd) {
-	case MODULE_CMD_INIT:
-		error = config_init_component(cfdriver_ioconf_virtio,
-		    cfattach_ioconf_virtio, cfdata_ioconf_virtio);
-		break;
-	case MODULE_CMD_FINI:
-		error = config_fini_component(cfdriver_ioconf_virtio,
-		    cfattach_ioconf_virtio, cfdata_ioconf_virtio);
-		break;
-	default:
-		error = ENOTTY;
-		break;
-	}
-#endif
-
-	return error;
 }

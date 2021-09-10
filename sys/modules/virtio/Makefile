@@ -5,8 +5,11 @@
 .PATH:	${S}/dev/pci
 
 KMOD=	virtio
+IOCONF= virtio.ioconf
 
-SRCS+=	virtio.c
+CFLAGS+= -Wno-error=sign-compare
+
+SRCS+=	virtio.c virtio_module.c
 
 CPPFLAGS+=	-DDIAGNOSTIC
 
