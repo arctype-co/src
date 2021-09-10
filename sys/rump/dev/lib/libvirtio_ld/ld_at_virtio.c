@@ -38,7 +38,15 @@ __KERNEL_RCSID(0, "$NetBSD: ld_at_virtio.c,v 1.4 2017/05/10 06:22:15 sevan Exp $
 #include <rump-sys/kern.h>
 #include <rump-sys/vfs.h>
 
+#ifdef _MODULE
+/*
+ * XXX Don't allow ioconf.c to redefine the "struct cfdriver ld_cd"
+ * XXX it will be defined in the common-code module
+ */
+#undef  CFDRIVER_DECL
+#define CFDRIVER_DECL(name, class, attr)
 #include "ioconf.c"
+#endif
 
 RUMP_COMPONENT(RUMP_COMPONENT_DEV)
 {
