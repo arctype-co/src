@@ -16,6 +16,7 @@ SRCS+=	if_43.c
 SRCS+=	if_llatbl.c nd.c
 SRCS+=	net_component.c
 SRCS+=	ether_sw_offload.c
+SRCS+=	rss_config.c
 
 .include <bsd.init.mk>
 
