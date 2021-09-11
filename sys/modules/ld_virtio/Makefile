@@ -7,7 +7,7 @@
 KMOD=	ld_virtio
 IOCONF=	ld_virtio.ioconf
 
-SRCS+=	ld_virtio.c
+SRCS+=	ld_virtio.c ld_virtio_module.c
 
 CPPFLAGS+=	-DNBIO=1
 

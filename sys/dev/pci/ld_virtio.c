@@ -37,7 +37,6 @@ __KERNEL_RCSID(0, "$NetBSD: ld_virtio.c,v 1.29 2021/01/20 19:46:48 reinoud Exp $
 #include <sys/device.h>
 #include <sys/disk.h>
 #include <sys/mutex.h>
-#include <sys/module.h>
 
 #include <dev/ldvar.h>
 #include <dev/pci/virtioreg.h>
@@ -782,49 +781,6 @@ ld_virtio_ioctl(struct ld_softc *ld, u_long cmd, void *addr, int32_t flag, bool 
 		error = EPASSTHROUGH;
 		break;
 	}
-
-	return error;
-}
-
-MODULE(MODULE_CLASS_DRIVER, ld_virtio, "ld,virtio");
-
-#ifdef _MODULE
-/*
- * XXX Don't allow ioconf.c to redefine the "struct cfdriver ld_cd"
- * XXX it will be defined in the common-code module
- */
-#undef  CFDRIVER_DECL
-#define CFDRIVER_DECL(name, class, attr)
-#include "ioconf.c"
-#endif
-
-static int
-ld_virtio_modcmd(modcmd_t cmd, void *opaque)
-{
-#ifdef _MODULE
-	/*
-	 * We ignore the cfdriver_vec[] that ioconf provides, since
-	 * the cfdrivers are attached already.
-	 */
-	static struct cfdriver * const no_cfdriver_vec[] = { NULL };
-#endif
-	int error = 0;
-
-#ifdef _MODULE
-	switch (cmd) {
-	case MODULE_CMD_INIT:
-		error = config_init_component(no_cfdriver_vec,
-		    cfattach_ioconf_ld_virtio, cfdata_ioconf_ld_virtio);
-		break;
-	case MODULE_CMD_FINI:
-		error = config_fini_component(no_cfdriver_vec,
-		    cfattach_ioconf_ld_virtio, cfdata_ioconf_ld_virtio);
-		break;
-	default:
-		error = ENOTTY;
-		break;
-	}
-#endif
 
 	return error;
 }
