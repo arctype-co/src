@@ -473,8 +473,11 @@ level of source directory"
 	# These variables can be overridden via "-V var=value" if
 	# you know what you are doing.
 	#
+	unsetmakeenv C_INCLUDE_PATH
+	unsetmakeenv CPLUS_INCLUDE_PATH
 	unsetmakeenv INFODIR
 	unsetmakeenv LESSCHARSET
+	unsetmakeenv LIBRARY_PATH
 	unsetmakeenv MAKEFLAGS
 	unsetmakeenv TERMINFO
 	setmakeenv LC_ALL C

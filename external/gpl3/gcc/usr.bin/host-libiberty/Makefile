@@ -5,10 +5,12 @@ libiberty/libiberty.a:
 	(cd libiberty; \
 		CC=${HOST_CC:Q} \
 		CFLAGS=${HOST_CFLAGS:Q} \
+		CPPFLAGS=${HOST_CPPFLAGS:Q} \
 		MAKE=${MAKE:Q} \
 		CONFIG_SHELL=${HOST_SH:Q} \
 		${HOST_SH} ${DIST}/libiberty/configure \
-		&& CC=${HOST_CC:Q} CFLAGS=${HOST_CFLAGS:Q} ${MAKE})
+		&& CC=${HOST_CC:Q} CFLAGS=${HOST_CFLAGS:Q} \
+		CPPFLAGS=${HOST_CPPFLAGS:Q} ${MAKE})
 
 cleandir:
 	-rm -rf libiberty

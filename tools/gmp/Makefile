@@ -5,6 +5,8 @@ GNUHOSTDIST=   ${.CURDIR}/../../external/lgpl3/gmp/dist
 
 CONFIGURE_ARGS+=--disable-shared
 
+CPPFLAGS+=	${HOST_CPPFLAGS}
+
 .include "${.CURDIR}/../Makefile.gnuhost"
 
 # Don't override CFLAGS and CXXFLAGS, it breaks ABI detection.

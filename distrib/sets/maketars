@@ -166,7 +166,7 @@ TMPFILES=
 cleanup()
 {
 	es=$?
-	/bin/rm -rf "${SDIR}" ${TMPFILES}
+	rm -rf "${SDIR}" ${TMPFILES}
 	trap - 0
 	exit ${es}
 }

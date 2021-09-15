@@ -56,6 +56,7 @@ DPADD+=	${LIBGDBSUPPORTDIR}/libgdbsupport.a \
 # Force c++
 CWARNFLAGS.clang+=	-Wno-deprecated
 HOST_CC:=		${HOST_CXX}
+HOST_CFLAGS+=		${HOST_CXXFLAGS}
 CC:=			${CXX}
 CFLAGS:=		${CXXFLAGS} -std=gnu++11 -Wno-error=stack-protector -pthread
 
