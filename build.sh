@@ -473,11 +473,14 @@ level of source directory"
 	# These variables can be overridden via "-V var=value" if
 	# you know what you are doing.
 	#
+	unsetmakeenv C_INCLUDE_PATH
+	unsetmakeenv CPLUS_INCLUDE_PATH
 	unsetmakeenv INFODIR
 	unsetmakeenv LESSCHARSET
 	unsetmakeenv MAKEFLAGS
 	unsetmakeenv TERMINFO
 	setmakeenv LC_ALL C
+	setmakeenv LIBRARY_PATH ${LIBRARY_PATH}
 
 	# Find information about the build platform.  This should be
 	# kept in sync with _HOST_OSNAME, _HOST_OSREL, and _HOST_ARCH

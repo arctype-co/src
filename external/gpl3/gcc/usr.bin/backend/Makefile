@@ -222,6 +222,7 @@ auto-build.h: gmp.h Makefile
 	(cd .ab && \
 		AWK=${TOOL_AWK:Q} \
 		CC=${ORIGHOST_CC:Q} CFLAGS=${HOST_CFLAGS:Q} \
+		CPPFLAGS=${HOST_CPPFLAGS:Q} \
 		CXX=${HOST_CXX:Q} CXXFLAGS=${HOST_CXXFLAGS:Q} \
 		MAKE=${TOOL_GMAKE:Q} \
 		CONFIG_SHELL=${HOST_SH:Q} \

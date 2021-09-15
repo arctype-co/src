@@ -32,6 +32,7 @@ MKPICLIB:=	no
 
 # Force using C++ for this
 HOST_CC:=	${HOST_CXX}
+HOST_CFLAGS+=	${HOST_CXXFLAGS}
 CC:=		${CXX}
 CFLAGS:=	${CXXFLAGS}
 

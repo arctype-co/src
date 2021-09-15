@@ -36,6 +36,7 @@ INSTALL_TARGET+=install-gprof
 
 CCADDFLAGS=	-I${GNUHOSTDIST}/include  -I${DESTDIR}/usr/include
 CCADDFLAGS+=	-B${DESTDIR}/usr/lib/
+CCADDFLAGS+=	${HOST_CPPFLAGS}
 LDADDFLAGS=	-L${DESTDIR}/lib -L${DESTDIR}/usr/lib
 
 # Force avoiding possibly non-executable install-sh.

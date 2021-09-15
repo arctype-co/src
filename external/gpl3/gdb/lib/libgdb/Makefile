@@ -46,6 +46,7 @@ CWARNFLAGS.clang+=	-Wno-switch
 # Force c++
 CWARNFLAGS.clang+=	-Wno-deprecated
 HOST_CC:=		${HOST_CXX}
+HOST_CFLAGS+=		${HOST_CXXFLAGS}
 CC:=			${CXX}
 CFLAGS:=		${CXXFLAGS} -std=gnu++17 -Wno-error=stack-protector
 
