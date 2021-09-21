@@ -23,10 +23,9 @@ INSTALL_TARGET=	install-gdb
 .include "${.CURDIR}/../Makefile.gmakehost"
 BUILD_MAKE=${TOOL_GMAKE}
 
-BINENV=		/usr/bin/env -i
+HOST_BINENV?=	/usr/bin/env -i
 
-
-MKNATIVE_ENV=	${BINENV} ${CONFIGURE_ENV:NC*:NLD*:Nam_cv_func_iconv*} \
+MKNATIVE_ENV=	${HOST_BINENV} ${CONFIGURE_ENV:NC*:NLD*:Nam_cv_func_iconv*} \
 			CC_FOR_BUILD=${HOST_CC:Q} \
 			CXX_FOR_BUILD=${HOST_CXX:Q} \
 			CFLAGS_FOR_BUILD="-I${TOOLDIR}/include" \
