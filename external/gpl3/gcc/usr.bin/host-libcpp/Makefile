@@ -19,8 +19,10 @@ BUILD_ENV= \
 		RANLIB=${HOST_RANLIB:Q} \
 		YACC=${YACC:Q}
 
+HOST_BINENV?=	/usr/bin/env -i
+
 GMAKE_J_ARGS?=	${MAKEFLAGS:[*]:M*-j*:C/.*(-j ?[0-9]*).*/\1/W}
-BUILD_COMMAND=	/usr/bin/env -i ${BUILD_ENV} ${TOOL_GMAKE} ${GMAKE_J_ARGS} -e
+BUILD_COMMAND=	${HOST_BINENV} ${BUILD_ENV} ${TOOL_GMAKE} ${GMAKE_J_ARGS} -e
 
 libcpp/libcpp.a:
 	[ ! -d libcpp ] && mkdir libcpp || true
