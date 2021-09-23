@@ -38,6 +38,7 @@ CCADDFLAGS=	-I${GNUHOSTDIST}/include  -I${DESTDIR}/usr/include
 CCADDFLAGS+=	-B${DESTDIR}/usr/lib/
 CCADDFLAGS+=	${HOST_CPPFLAGS}
 LDADDFLAGS=	-L${DESTDIR}/lib -L${DESTDIR}/usr/lib
+LDADDFLAGS+=	${HOST_LDFLAGS}
 
 # Force avoiding possibly non-executable install-sh.
 CONFIGURE_ENV+= ac_cv_path_mkdir="${TOOLDIR}/bin/${MACHINE_GNU_PLATFORM}-install -d"

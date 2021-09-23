@@ -12,7 +12,11 @@ CPPFLAGS+=	${HOST_CPPFLAGS}
 # Don't override CFLAGS and CXXFLAGS, it breaks ABI detection.
 # PATH needs special treating since "make" tries to expand $PATH
 # when variable is used.
-CONFIGURE_ENV:=	${CONFIGURE_ENV:NPATH=*:NCFLAGS=*:NCXXFLAGS=*} \
+# Shim HOST_LDFLAGS into our compiler flags here.
+# ./configure for this program does not respect LDFLAGS.
+CONFIGURE_ENV:=	${CONFIGURE_ENV:NPATH=*:NCFLAGS=*:NCXXFLAGS=*:NHOST_CC=*} \
+		HOST_CC="${HOST_CC} ${HOST_LDFLAGS}" \
+		CFLAGS=${HOST_LDFLAGS:Q} \
 		PATH="${TOOLDIR:Q}/bin:$$PATH"
 
 # Force avoiding possibly non-executable install-sh.

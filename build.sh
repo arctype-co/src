@@ -479,8 +479,8 @@ level of source directory"
 	unsetmakeenv LESSCHARSET
 	unsetmakeenv MAKEFLAGS
 	unsetmakeenv TERMINFO
+	unsetmakeenv LIBRARY_PATH
 	setmakeenv LC_ALL C
-	setmakeenv LIBRARY_PATH ${LIBRARY_PATH}
 
 	# Find information about the build platform.  This should be
 	# kept in sync with _HOST_OSNAME, _HOST_OSREL, and _HOST_ARCH

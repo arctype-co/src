@@ -141,41 +141,21 @@ libldtestplug_la_LIBADD =
 @ENABLE_PLUGINS_TRUE@am_libldtestplug_la_OBJECTS =  \
 @ENABLE_PLUGINS_TRUE@	libldtestplug_la-testplug.lo
 libldtestplug_la_OBJECTS = $(am_libldtestplug_la_OBJECTS)
-AM_V_lt = $(am__v_lt_@AM_V@)
-am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
-am__v_lt_0 = --silent
-am__v_lt_1 = 
-libldtestplug_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(libldtestplug_la_CFLAGS) $(CFLAGS) \
-	$(libldtestplug_la_LDFLAGS) $(LDFLAGS) -o $@
 @ENABLE_PLUGINS_TRUE@am_libldtestplug_la_rpath =
 libldtestplug2_la_LIBADD =
 @ENABLE_PLUGINS_TRUE@am_libldtestplug2_la_OBJECTS =  \
 @ENABLE_PLUGINS_TRUE@	libldtestplug2_la-testplug2.lo
 libldtestplug2_la_OBJECTS = $(am_libldtestplug2_la_OBJECTS)
-libldtestplug2_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(libldtestplug2_la_CFLAGS) $(CFLAGS) \
-	$(libldtestplug2_la_LDFLAGS) $(LDFLAGS) -o $@
 @ENABLE_PLUGINS_TRUE@am_libldtestplug2_la_rpath =
 libldtestplug3_la_LIBADD =
 @ENABLE_PLUGINS_TRUE@am_libldtestplug3_la_OBJECTS =  \
 @ENABLE_PLUGINS_TRUE@	libldtestplug3_la-testplug3.lo
 libldtestplug3_la_OBJECTS = $(am_libldtestplug3_la_OBJECTS)
-libldtestplug3_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(libldtestplug3_la_CFLAGS) $(CFLAGS) \
-	$(libldtestplug3_la_LDFLAGS) $(LDFLAGS) -o $@
 @ENABLE_PLUGINS_TRUE@am_libldtestplug3_la_rpath =
 libldtestplug4_la_LIBADD =
 @ENABLE_PLUGINS_TRUE@am_libldtestplug4_la_OBJECTS =  \
 @ENABLE_PLUGINS_TRUE@	libldtestplug4_la-testplug4.lo
 libldtestplug4_la_OBJECTS = $(am_libldtestplug4_la_OBJECTS)
-libldtestplug4_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
-	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
-	$(libldtestplug4_la_CFLAGS) $(CFLAGS) \
-	$(libldtestplug4_la_LDFLAGS) $(LDFLAGS) -o $@
 @ENABLE_PLUGINS_TRUE@am_libldtestplug4_la_rpath =
 am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(infodir)" \
 	"$(DESTDIR)$(man1dir)"
@@ -189,6 +169,10 @@ am_ld_new_OBJECTS = ldgram.$(OBJEXT) ldlex-wrapper.$(OBJEXT) \
 	$(am__objects_1) ldbuildid.$(OBJEXT)
 ld_new_OBJECTS = $(am_ld_new_OBJECTS)
 am__DEPENDENCIES_1 =
+AM_V_lt = $(am__v_lt_@AM_V@)
+am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
+am__v_lt_0 = --silent
+am__v_lt_1 = 
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -1045,6 +1029,26 @@ ld_new_LDADD = $(EMULATION_OFILES) $(EMUL_EXTRA_OFILES) $(BFDLIB) $(LIBCTF) $(LI
 @ENABLE_PLUGINS_TRUE@libldtestplug4_la_SOURCES = testplug4.c
 @ENABLE_PLUGINS_TRUE@libldtestplug4_la_CFLAGS = -g -O2
 @ENABLE_PLUGINS_TRUE@libldtestplug4_la_LDFLAGS = -no-undefined -rpath /nowhere
+libldtestplug_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug_la_LDFLAGS) $(LTLDFLAGS) -o $@
+
+libldtestplug2_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug2_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug2_la_LDFLAGS) $(LTLDFLAGS) -o $@
+
+libldtestplug3_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug3_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug3_la_LDFLAGS) $(LTLDFLAGS) -o $@
+
+libldtestplug4_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug4_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug4_la_LDFLAGS) $(LTLDFLAGS) -o $@
+
 MAINTAINERCLEANFILES = configdoc.texi ld.1 ld.info
 
 # We want to reconfigure if configure.host or configure.tgt changes.
@@ -1132,16 +1136,16 @@ clean-noinstLTLIBRARIES:
 	}
 
 libldtestplug.la: $(libldtestplug_la_OBJECTS) $(libldtestplug_la_DEPENDENCIES) $(EXTRA_libldtestplug_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libldtestplug_la_LINK) $(am_libldtestplug_la_rpath) $(libldtestplug_la_OBJECTS) $(libldtestplug_la_LIBADD) $(LIBS)
+	$(AM_V_GEN)$(libldtestplug_la_LINK) $(am_libldtestplug_la_rpath) $(libldtestplug_la_OBJECTS) $(libldtestplug_la_LIBADD) $(LIBS)
 
 libldtestplug2.la: $(libldtestplug2_la_OBJECTS) $(libldtestplug2_la_DEPENDENCIES) $(EXTRA_libldtestplug2_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libldtestplug2_la_LINK) $(am_libldtestplug2_la_rpath) $(libldtestplug2_la_OBJECTS) $(libldtestplug2_la_LIBADD) $(LIBS)
+	$(AM_V_GEN)$(libldtestplug2_la_LINK) $(am_libldtestplug2_la_rpath) $(libldtestplug2_la_OBJECTS) $(libldtestplug2_la_LIBADD) $(LIBS)
 
 libldtestplug3.la: $(libldtestplug3_la_OBJECTS) $(libldtestplug3_la_DEPENDENCIES) $(EXTRA_libldtestplug3_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libldtestplug3_la_LINK) $(am_libldtestplug3_la_rpath) $(libldtestplug3_la_OBJECTS) $(libldtestplug3_la_LIBADD) $(LIBS)
+	$(AM_V_GEN)$(libldtestplug3_la_LINK) $(am_libldtestplug3_la_rpath) $(libldtestplug3_la_OBJECTS) $(libldtestplug3_la_LIBADD) $(LIBS)
 
 libldtestplug4.la: $(libldtestplug4_la_OBJECTS) $(libldtestplug4_la_DEPENDENCIES) $(EXTRA_libldtestplug4_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(libldtestplug4_la_LINK) $(am_libldtestplug4_la_rpath) $(libldtestplug4_la_OBJECTS) $(libldtestplug4_la_LIBADD) $(LIBS)
+	$(AM_V_GEN)$(libldtestplug4_la_LINK) $(am_libldtestplug4_la_rpath) $(libldtestplug4_la_OBJECTS) $(libldtestplug4_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
@@ -1335,7 +1339,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lppclinux.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lppcnto.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lppcsim.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lriscv.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lr5900.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lr5900n32.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/eelf32lriscv.Po@am__quote@
@@ -2603,6 +2606,8 @@ check-DEJAGNU: site.exp
 development.exp: $(BFDDIR)/development.sh
 	$(EGREP) "[development|experimental]=" $(BFDDIR)/development.sh  \
 	  | $(AWK) -F= '{ print "set " $$1 " " $$2 }' > $@
+
+LTLDFLAGS != $(SHELL) $(top_srcdir)/../../../gcc/dist/libtool-ldflags $(LDFLAGS)
 
 # DOCUMENTATION TARGETS
 # Manual configuration file; not usually attached to normal configuration,
