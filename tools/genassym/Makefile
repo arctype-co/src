@@ -17,7 +17,7 @@ ${TIMESTAMP}: genassym
 	${HOST_INSTALL_FILE} -m ${BINMODE} ${.ALLSRC} ${.TARGET}
 
 genassym: genassym.sh
-	${TOOL_SED} -e "s,/bin/sh,${HOST_BSHELL},g" \
+	${TOOL_SED} -e "s,\#\!/bin/sh,\#\!${HOST_BSHELL},g" \
 	    -e "s,{AWK:=.*},{AWK:="${TOOL_AWK:Q}"}," \
 		< ${.ALLSRC} > ${.TARGET}
 
