@@ -17,7 +17,7 @@ CLEANFILES+=	config.cache config.log config.status host-mkdep
 # available at the time that host-mkdep is built.  The configure script
 # will try to find some other version of awk.
 #
-CONFIGURE_ENV=	CC=${HOST_CC:Q}
+CONFIGURE_ENV=	CC=${HOST_CC:Q} LDFLAGS=${HOST_LDFLAGS:Q}
 
 CONFIGURE_ARGS=	--cache-file=config.cache
 .if ${MAKEVERBOSE} == 0

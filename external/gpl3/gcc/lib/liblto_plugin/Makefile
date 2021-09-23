@@ -47,6 +47,7 @@ config.h: Makefile
 		AWK=${TOOL_AWK:Q} \
 		CC=${HOST_CC:Q} CFLAGS=${HOST_CFLAGS:Q} \
 		CPPFLAGS=${HOST_CPPFLAGS:Q} \
+		LDFLAGS=${HOST_LDFLAGS:Q} \
 		MAKE=${MAKE:Q} \
 		CONFIG_SHELL=${HOST_SH:Q} \
 		${HOST_SH} ${DIST}/libiberty/configure \

@@ -48,7 +48,7 @@ fi
 CFLAGS="-g -W -Wall -Wmissing-prototypes -Wstrict-prototypes -Wwrite-strings"
 CFLAGS="${CFLAGS} -Wno-unused-parameter"
 LDADD=
-LDFLAGS=
+LDFLAGS="${LDFLAGS}"
 LD_NANOSLEEP=
 LD_OHASH=
 LD_RECVMSG=
@@ -166,10 +166,10 @@ singletest() {
 	n=${1}${3}${4}
 	cat 1>&3 << __HEREDOC__
 testing ${n} ...
-${COMP} -o test-${1} test-${1}.c ${3} ${4}
+${COMP} ${LDFLAGS} -o test-${1} test-${1}.c ${3} ${4}
 __HEREDOC__
 
-	if ${COMP} -o "test-${1}" "${SOURCEDIR}/test-${1}.c" ${3} ${4} 1>&3 2>&3
+	if ${COMP} ${LDFLAGS} -o "test-${1}" "${SOURCEDIR}/test-${1}.c" ${3} ${4} 1>&3 2>&3
 	then
 		echo "partial result of ${n}: ${CC} succeeded" 1>&3
 	else

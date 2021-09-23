@@ -1027,6 +1027,24 @@ libldtestplug4_la_CFLAGS= -g -O2
 libldtestplug4_la_LDFLAGS = -no-undefined -rpath /nowhere
 endif
 
+LTLDFLAGS != $(SHELL) $(top_srcdir)/../../../gcc/dist/libtool-ldflags $(LDFLAGS)
+libldtestplug_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug_la_LDFLAGS) $(LTLDFLAGS) -o $@
+libldtestplug2_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug2_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug2_la_LDFLAGS) $(LTLDFLAGS) -o $@
+libldtestplug3_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug3_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug3_la_LDFLAGS) $(LTLDFLAGS) -o $@
+libldtestplug4_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
+	$(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link $(CCLD) \
+	$(libldtestplug4_la_CFLAGS) $(CFLAGS) \
+	$(libldtestplug4_la_LDFLAGS) $(LTLDFLAGS) -o $@
+
 # DOCUMENTATION TARGETS
 # Manual configuration file; not usually attached to normal configuration,
 # because almost all configs use "gen" version of manual.

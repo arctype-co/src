@@ -16,6 +16,7 @@ DPSRCS+=	config.h
 CLEANFILES+=	config.log config.h Makefile.local
 
 config.h: configure 
-	SRCDIR=${DISTDIR} CC=${HOST_CC} ${HOST_SH} ${DISTDIR}/configure
+	SRCDIR=${DISTDIR} CC=${HOST_CC} LDFLAGS=${HOST_LDFLAGS:Q} ${HOST_SH} \
+	       ${DISTDIR}/configure
 
 .include "${.CURDIR}/../Makefile.host"
