@@ -334,7 +334,7 @@ GET_PATCHES_SH=	${MPFRDIST}/tools/get_patches.sh
 PATCHES=	${MPFRDIST}/PATCHES
 
 get_patches.c: ${GET_PATCHES_SH} ${PATCHES}
-	${GET_PATCHES_SH} ${PATCHES} > $@.tmp && mv $@.tmp $@
+	${HOST_SH} ${GET_PATCHES_SH} ${PATCHES} > $@.tmp && mv $@.tmp $@
 
 CLEANFILES+= get_patches.c.tmp get_patches.c
 

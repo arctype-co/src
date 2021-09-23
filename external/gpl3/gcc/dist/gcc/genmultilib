@@ -220,8 +220,10 @@ fi
 # If the MULTILIB_REQUIRED list are provided,
 # filter out combinations not in this list.
 if [ -n "${multilib_required}" ]; then
+  cat >tmpmultilib2 <<EOF
+#!${CONFIG_SHELL:-/bin/sh}
+EOF
   cat >tmpmultilib2 <<\EOF
-#!/bin/sh
 # This recursive script weeds out any combination of multilib
 # switches that not in the expected list.
 
@@ -373,9 +375,10 @@ echo "\".${defaultosdirname} ${optout};\","
 # The directory names will be deduced from MULTILIB_DIRNAMES,
 # MULTILIB_OSDIRNAMES or the option combination itself.
 rm -rf tmpmultilib3
+cat >tmpmultilib3 <<EOF
+#!${CONFIG_SHELL:-/bin/sh}
+EOF
 cat >tmpmultilib3 <<\EOF
-#!/bin/sh
-
 dirout=
 combo=$1
 todirnames=$2
@@ -423,9 +426,10 @@ chmod +x tmpmultilib3
 # Script to look through the options and output each option that is present,
 # and negate each option that is not present.
 rm -rf tmpmultilib4
+cat >tmpmultilib4 <<EOF
+#!${CONFIG_SHELL:-/bin/sh}
+EOF
 cat > tmpmultilib4 <<\EOF
-#!/bin/sh
-
 optout=
 combo=$1
 options=$2

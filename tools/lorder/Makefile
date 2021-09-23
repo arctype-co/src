@@ -17,7 +17,7 @@ ${TIMESTAMP}: lorder
 	${HOST_INSTALL_FILE} -m ${BINMODE} ${.ALLSRC} ${.TARGET}
 
 lorder: lorder.sh
-	${TOOL_SED} -e "s,/bin/sh,"${HOST_BSHELL:Q}",g" \
+	${TOOL_SED} -e "s,#\!/bin/sh,#\!"${HOST_BSHELL:Q}",g" \
 	    -e "s,{JOIN:=.*},{JOIN:="${TOOL_JOIN:Q}"}," \
 	    -e "s,{MKTEMP:=.*},{MKTEMP:="${TOOL_MKTEMP:Q}"}," \
 	    -e "s,{NM:=.*},{NM:="${NM:Q}"}," \
